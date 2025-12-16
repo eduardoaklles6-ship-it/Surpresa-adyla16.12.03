@@ -1,0 +1,35 @@
+// CONTADOR DE TEMPO JUNTOS
+const startDate = new Date("October 9, 2025 00:00:00");
+
+function updateTimeTogether() {
+  const now = new Date();
+  const diff = now - startDate;
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const months = Math.floor(days / 30);
+  const years = Math.floor(months / 12);
+
+  let text = `${days} dias juntos 💖`;
+  if (months > 0) text = `${months} meses juntos 💖`;
+  if (years > 0) text = `${years} anos juntos 💖`;
+
+  document.getElementById("time-together").innerHTML = text;
+}
+
+updateTimeTogether();
+setInterval(updateTimeTogether, 3600000);
+
+// ANIMAÇÃO AO ROLAR
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
